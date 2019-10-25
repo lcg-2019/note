@@ -127,7 +127,9 @@ target="_self"当前窗口跳转到bing搜索,同时不设置默认也是.
 - `<form action="" method="post"></form>`
     - action属性是要提交的地址
     - method属性是提交的方式
-
+    - method
+        - get 在地址栏提交参数,不安全,有大小限制(小于4k的样子), 一般用于获取数据.
+        - post 在请求体中提交参数,安全,没有大小限制.
 ##### ` <fieldset> </fieldset>` 用于分组
 ##### `   <legend>基本信息</legend>` 用于分组
 ##### `<label></label>`
@@ -149,13 +151,51 @@ target="_self"当前窗口跳转到bing搜索,同时不设置默认也是.
 |checked| 多选框默认选中|/|
 |autofocus|自动获得焦点|/|
 |placeholder|`placeholder="任意"`|提示用的|
-|required|禁止读写|/|
+|disabled|禁止读写|/|
 |readonly| 只读||
 ##### `<textarea>`标签
 - `<textarea name="" id="" cols="100" rows="10"   required style="resize:none;vertical-align:middle"><textarea>` 文本域
 - resize:none 禁止拉伸.
 -------------
 #### 序列标签
+##### 无序列表
+```html
+     <ul>
+        <li>无序列表1</li>
+        <li>无序列表2</li>
+        <li>无序列表3</li>
+        <li>无序列表4</li>
+        <li>无序列表5</li>
+    </ul>
+```
+##### 有序列表
+```html
+     <ol>
+        <li>有序列表1</li>
+        <li>有序列表2</li>
+        <li>有序列表3</li>
+        <li>有序列表4</li>
+        <li>有序列表5</li>
+    </ol>
+```
+##### 自定义列表
+```html
+     <dl>
+        <dt>自定义列表标题(动物)</dt>
+        <dd>自定义列表(大蛇丸)</dd>
+        <dd>自定义列表(蛤蟆吉))</dd>
+        <dt>植物</dt>
+        <dd>茄子</dd>
+        <dd>萝卜</dd>
+    </dl>
+```
+
+#### 浮动
+##### float
+- `float:left;`左浮动
+- ` float: right;`右浮动
+- 元素浮动后会脱离文档流 , 上面的元素浮动后 下面的元素会上移,元素中的内容会环绕在浮动的元素周围. 
+
 ### 元素的特性
 #### 块级元素
 1. 块级元素独占一行,没有设置宽,通栏.
