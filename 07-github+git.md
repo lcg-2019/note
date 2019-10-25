@@ -50,7 +50,11 @@
 工作区===>暂存区====>提交到本地仓库===>同步到远程仓库
 
 -   git add .
+-   git status 查看状态
 -   git commit -m'提交信息'
 -   git push origin master
+### git想要拉取远程仓库更改后的文件有冲突
+-   git stash
+-   git pull
 
 #### 注意 不要再 github 远程仓库里边 修改任意一个文件
