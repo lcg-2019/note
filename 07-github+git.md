@@ -53,6 +53,7 @@
 -   git status 查看状态
 -   git commit -m'提交信息'
 -   git push origin master
+-   git remote -v 查看远程仓库地址
 ### git想要拉取远程仓库更改后的文件有冲突
 -   git stash
 -   git pull
