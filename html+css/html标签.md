@@ -189,16 +189,10 @@ target="_self"当前窗口跳转到bing搜索,同时不设置默认也是.
         <dd>萝卜</dd>
     </dl>
 ```
-
-#### 浮动
-##### float
-- `float:left;`左浮动
-- ` float: right;`右浮动
-- 元素浮动后会脱离文档流 , 上面的元素浮动后 下面的元素会上移,元素中的内容会环绕在浮动的元素周围. 
-
+-------
 ### 元素的特性
 #### 块级元素
-1. 块级元素独占一行,没有设置宽,通栏.
+1. 块级元素独占一行,没有设置宽则为父元素的100%.
 2. 宽和高可以有效设置
 ##### 行内块元素
 1. 可以和其他元素共占一行,没有设置宽则为默认宽高(或内容撑开).
@@ -206,3 +200,77 @@ target="_self"当前窗口跳转到bing搜索,同时不设置默认也是.
 ##### 行内元素
 1. 可以和其他元素共占一行,没有设置宽高则为内容宽高.
 2. 设置宽高无效.
+------------------
+### 常用属性
+#### 宽 width
+- 任意值 或百分数.
+#### 高 height
+- 任意值 或百分数.
+#### 颜色
+- 内容颜色
+
+##### 行高 line-height
+- `line-height:1`文字可以顶天立地.
+- 行高等于盒子高度可以内容垂直居中.
+#### 背景 background
+|属性|值|作用|
+|:---:|:---:|:---:|
+|   background-color| 颜色|设置背景颜色|
+| background-image|`url('img/bf.png')`|设置背景图片|
+| background-repeat|`no-repeat/repeat-x/repeat-y/repeat`|是否平铺|
+|background-position|像素或left right top bottom center(不写默认center,写一个第二个默认center)|背景定位|
+|background-attachment| scroll/fixed|是否滚动|
+- `background	简写	background: green url(1.jpg) no-repeat center center fixed; `顺序不能错
+-  `rgba(0~255,0~255,0~255,透明度0~1)`
+##### display
+- ` display: none;`可影藏元素,不占位置.(` visibility hidden  隐藏占位`)
+-  `display: block;` 转换成块级元素
+-  `display: inline-block;` 转换成行内块元素
+-  `display: inline;` 转换成行内元素
+
+#### margin 
+- top/bottom/left/right 调外边距
+###### 嵌套崩塌的解决办法
+-   ` border: 1px solid orangered; `解决崩塌的第一种方法 
+- - ` padding-top:1px ; `解决崩塌的第二种方法 加padding 或者border 但会撑大盒子 
+ #### padding
+  -  top/bottom/left/right 调外内边距 会撑大盒子  
+  
+#### opcity 透明度
+- 0~1的小数 可省略0;
+#### text-align
+- center 文本居中
+- right 靠右对齐
+- left 靠左对齐         
+
+#### 浮动
+###### float
+- `float:left;`左浮动
+- ` float: right;`右浮动
+- 元素浮动后会脱离文档流 , 上面的元素浮动后 下面的元素会上移,元素中的内容会环绕在浮动的元素周围. 
+- 浮动之后块级元素可同行展示,行内元素可设置宽高.(`text-align:center;`无效);
+
+#### 清除浮动带来的影响
+- 计算宽高
+- 给父元素加`overflow:hidden;`
+- 浮动元素后面加一个空元素,设置属性`clear:both;`.
+#### 定位position
+###### 相对定位  relative
+- 可以通过top/bottom/left/right来调节位置,之前位置保留
+- 移动参考对象为自身
+###### 绝对定位 absolute
+- 可以通过top/bottom/left/right来调节位置,之前位置**不**保留
+- 移动参考对象为最近有定位属性的上级
+###### 固定定位 fixed
+-   可以通过top/bottom/left/right来调节位置 之前位置**不**保留
+- 移动参考对象为浏览器视口.
+###### z-index
+- 修改定位元素层级 ,值越大层级越高,但受限父元素.
+- 拥有定位属性的元素可以设置
+
+----
+
+
+
+
+
