@@ -1,8 +1,9 @@
 ## 命名
-- 只允许存在 字母 数字 _  $.
+- 只允许存在 字母 数字 _  $ 
 - 不能数字开头,严格区分大小写.
 - 驼峰命名法后面的首字母大写.
 - 见名知意.
+- 不能是关键字和保留字
 ## 数据类型
 
 #### 基本数据类型
@@ -48,6 +49,12 @@
                 console.log(parseInt(null));//NaN
                 console.log(parseInt(NaN));//NaN
     ```
+###### parseInt
+- parseInt(数值,进制);
+```js
+                        console.log(parseInt(18,16));//24
+                         console.log(parseInt(18,10));//18
+```
 #### 字符串类型
 
 -  string   `console.log(typeof '10');//string`
@@ -182,4 +189,160 @@
 
        ```
 
+------------------
+ #### Math对象
+###### Math对象内置的方法
+- `Math.abs()` 绝对值
+- `Math.floor()` 向下取整(向小取整)
+- `Math.ceil()` 向上取整(向大取整)
+- `Math.pow(x,y)` 表示x的y次幂
+- `Math.PI` π
+- `Math.round()` 正数四舍五入 负数五舍六入
+- `Math.random()` 随机 0~1之间的小数(很多位的小数,且取不到1)
+- `Math.sqrt(3)` 开方 (根号3); 
+```js
+     console.log(Math.abs(-88));//88 绝对值
+        console.log(Math.floor(1.9));//1 向下取整 /向下取整
+        console.log(Math.ceil(1.1));//2 向上取整 /向大取整
+        console.log(Math.pow(2,3));//2的3三次幂 
+        console.log(Math.random());;//随机数 0-1之间
+        console.log(Math.sqrt(25));//25开方
+        console.log(Math.round(-0.5));//-0 正数四舍五入 负数 五舍六入
+        console.log(Math.round(2.5));//3   
+ ```
+ #### Date对象
+ ###### Date内置对象的方法
+ ```js
+     var date = new Date();   
+        console.log('年份' +  date.getFullYear()); //获取年份
+        console.log('月份' +   (date.getMonth()+1));//获取月份 因为月份从0开始所以要加1;
+        console.log('周' + date.getDay());
+        console.log('日' + date.getDate());
+        console.log('时' + date.getHours());
+        console.log('分' + date.getMinutes());
+        console.log('秒' + date.getSeconds());
+        console.log('毫秒' + date.getMilliseconds());
+        console.log('时间戳' + date.getTime());
+        console.log('时间戳' + Date.now());
 
+        //指定时间
+        var dat = new Date('2019/10/22 20:20:20');
+        //再使用date的方法 获取的就是指定时间的数据.
+
+```
+#### Array对象
+> 数组内数据尽量保持同一类型
+###### 创建数组的两种方法
+1. **字面量**的方法 `var arr = []`;
+2. 用**构建函数**的方法`var arr = new Array()`;如果括号内为一个数字类型的元素 则表示该书组的长度,里面的数组元素都是empty;
+######  数组的方法
+- `array.pop()` 返回值是 删除的元素;不用传参; 删除最后一个元素;
+- `array.push()` 返回值是数组长度;可以传一个到多个 ;从最后面添加元素; 
+- `array.shift()` 返回值是删除的元素;不用传参;删除第一个元素;
+- `array.unshift()`返回值是数组长度;可以传一个到多个参数;从前面添加元素;
+- `array.contcat()`返回值是新的数组;传的值为一个或多个数组,逗号隔开; 从后面添加数组;
+- `array.join()`返回值是字符串;传的值一个是为字符串的连接符,两个值的时候第二个值为返回的元素数量;将数组元素用连接符连接起来转换成字符串.
+- `array.split()`返回是分割后的数组;传一个值为分割的参照物;将数组分割成数组
+- `array.slice()`返回值是截取的部分;一个参数(索引)时 从该参数直接取到结尾,两个参数的时候则从第一个参数取到第二个参数(不包括第二个参数);截取数组;
+- `array.splice()` 返回值是删除的部分;一个参数时为从头开始删除到该参数(索引),两个参数则表示从第一个参数删除到第二个参数,两个以上则表示在删除的元素后面添加元素; 删除指定部分的数组元素.
+- `array.indexOf()` 返回值是搜索到的元素的索引;一个参数(搜索的元素),两个参数 第二个参数为开始位置的索引; 主要用于搜索数组元素的索引;
+```js
+    
+        var ar = new Array();
+
+
+        arr = [1,12,12,1,21,31,31,3,13,13];
+
+        var a = arr.shift();//返回的是删除掉的  删除掉第一个元素
+        console.log(a,arr);
+        var h = arr.pop();//返回删除元素的最后一个  
+        console.log(h,arr);
+
+
+        var chang = arr.unshift('添加在最前面','可以添加多个');// 返回的是数组的长度
+        console.log(chang,arr);
+         var  mb = arr.push('添加到最后边','也可以多个');//返回的是数组的长度
+         console.log(mb ,arr);
+
+
+         var ar1 = [1,2,13,213];
+         var ar2 = new Array(123,123,123);//只填一个数字的时候是设置长度 元素师empty
+         var newArr = ar1.concat(ar2);//数组拼接 返回的是拼接后的数组
+          console.log(newArr,ar1,ar2);
+
+
+          var nums = [1,2312,12,13,13];
+         var newNums = nums.join('不写默认,号');//转成字符串 
+         console.log(newNums,nums);
+
+
+         var nums1 = nums.toString();//返回带逗号分割的数组
+         console.log(nums1 , nums);
+
+         var nums2 = nums1.split(',',3);//不写默认按逗号分割字符串成数组 第二个参数 设置返回元素数量(可不输)
+         console.log(nums2,nums1);
+
+         var shuZu = [1,2,3,4,5,6,7];
+         var a1 = shuZu.slice(1,2); //从索引1 开始取到2(不包括2) 只有一个参数默认为开始并取到结尾,用于截取数组
+         console.log(a1,shuZu);
+        var a2 = shuZu.splice(1,2,'添加的元素','可以多个,也可以不输');//一个参数的话从头开始删除几个元素 两个的话为索引(1~2)包括1和2
+        console.log(a2,shuZu);
+
+        var shuz = ['a','b','c','d'];
+         shuz.indexOf('b',0);//搜索元素的索引 第二个值为开始的位置.
+```
+---------------------
+### 循环
+
+##### for循环
+> 
+##### if  循环 if else 循环 if (else if)  else
+
+##### while 循环 do while
+
+###### 三种排序方法
+```js
+      // //插入排序
+        var arr = [131,516,156,61,6,66,0,36,15161,61,61,3,30,30,30];
+    //     var j = 0;
+    //     for(var i = 0;i < arr.length ;i++ ){
+    //         j = i -1 ;
+    //         var temp = arr[i];
+    //         while(j>=0 && temp<arr[j]){
+    //             arr[j+1] = arr[j];
+    //             j--;
+    //         };
+    //         arr[j+1] = temp;
+    //     }
+    //     console.log(arr);
+
+    //冒泡排序
+
+        for(var i = 0;i<arr.length-1;i++){
+            for(var j = 0 ;j < arr.length - 1 - i;j++){
+                if(arr[j]>arr[j+1]){
+                    var temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                };
+            };
+        };
+        console.log(arr);
+
+
+       // 选择排序法
+        var  min = 0;
+        for(var i = 0; i<arr.length ;i++){
+            for(var j = i+1;j < arr.length; j++){
+                min = i;
+                if(arr[min] > arr[j]){
+                    min = j;    
+              }
+                     var temp = arr[min];
+                      arr[min] = arr[i];
+                        arr[i] = temp;
+
+            }
+        }
+        console.log(arr);
+```
