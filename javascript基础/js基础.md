@@ -191,6 +191,7 @@
 
 ----------------------------------------------
 ## 对象
+
 - 创建对象的三种方法
 
 ```js
@@ -227,6 +228,9 @@
                 console.log('what');
             };
         };
+
+
+        //this 指向调用者本身
         var user2 = new Parson('张三','男',16);
         console.log(user2,typeof user2);
         var user3 = new Parson('赵四','男',18);
@@ -237,6 +241,8 @@
         console.log(user5);
 
 ```
+-  this 指向调用者本身
+- delete 对象.属于 可以删除属性 `delete  obj.type`;
  #### Math对象
 ###### Math对象内置的方法
 - `Math.abs()` 绝对值
