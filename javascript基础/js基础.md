@@ -441,7 +441,7 @@
 ```js
     var nums = [15,61,61,61,6,64,646];
     nums.sort(function(a,b){
-        a > b;//从小到大排序
+       return a - b;//从小到大排序
         // b > a;// 从大到小排序
 
     })
