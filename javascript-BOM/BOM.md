@@ -138,3 +138,156 @@ box.onclick = function () {
 - 元素拖拽的两种方法
     1.  获取鼠标在元素中的位置的距离,移动时鼠标的位置减去获取的那个距离.
     2. 记录鼠标的位置,移动后鼠标的位置减去之前鼠标记录的位置 + 移动元素当前的位置.
+
+
+#### 防抖
+
+    ```js
+        //一开始不执行 停下来就执行
+            function debounce(fn,time){
+                var timer = null;
+                return function(){
+
+                    if(timer){
+                        clearTimeout(timer)
+                    }
+                    timer = setTimeout(function(){
+                            fn();
+                    },time)
+                }
+            }
+
+    //一开始先执行一次 一直动不执行  等同下面
+
+        function debounce(func, wait) {
+            var timer = null;
+            return function () {
+
+                if (timer) {
+                    clearTimeout(timer);
+                } else {
+                    func();
+                }
+                timer = setTimeout(function () {
+                    timer = null;
+                }, wait);
+            }
+        }
+
+    ```
+
+#### 节流
+
+     ```js
+
+        //每过time 执行一次 
+               function throttle(fn,time){
+
+                   var times = new Data();
+                   return function(){
+                       var temp = new Data();
+
+                       if(temp - times >= time){
+                           fn();
+                           times = temp;
+                       }
+                       
+                   }
+
+               }
+
+        //
+            function throttle(fn,time){
+                var timer = null;
+
+                return function(){
+                    if(!timer){
+                        fn();
+                    }
+
+             timer = setTimeout(function () {
+                    timer = null;
+                }, 1000)
+
+                }
+
+            }
+     ```
+
+#### localhost
+
+```js
+        console.log("#号后跟零或多个字符 ===>", location.hash);
+        console.log("返回服务器名称和端口号", location.host);
+        console.log("返回不带端口号的服务器名称", location.hostname);
+        console.log("返回当前加载页面的完整URL", location.href);
+        console.log("返回URL中的目录和（或）文件名", location.pathname);
+        console.log("返回 URL 中指定的端口号", location.port);
+        console.log("返回页面使用的协议", location.protocol);
+        console.log("返回URL的查询字符串", location.search);
+        console.log("返回页面使用协议+网站名", location.origin);
+
+```
+
+#### 多媒体标签
+
+```js
+    // 多媒体的dom元素.属性的方法获取控制
+     <button>currentTime获取当前进度</button>
+    <button>duration总时长</button>
+    <button>paused播放状态</button>
+    <button>load()重新加载</button>
+    <button>play()播放</button>
+    <button>pause()暂停</button>
+    <button>oncanplay 开始播放时触发</button>
+    <button>ontimeupdate 播放中触发</button>
+    <button>onended 播放完触发</button>
+
+```
+#### es5新增存储
+- **seesionStroage** 和 **localStroage**
+
+ | 传值          | 作用     |
+ | :--------:   | :-----:   | :----: |
+ | set(key,value)| 设置参数 |
+ | get(key)      | 获取value|
+ | remove(key)| 根据key移除某个参数|
+ |clear()|清空存储|
+
+ - 两者区别 前者关闭页面即清除数据,后者需手动清除. 需要相同域名下使用数据
+ ##### 判断是否全屏和全屏操作
+
+ ```js
+<script>
+        var inner = document.querySelector('.inner')
+
+        // 全屏
+        inner.ondblclick = function () {
+            if (ifFullscreen()) {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitCancelFullScreen) {
+                    document.webkitCancelFullScreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                }
+            } else {
+                if (inner.requestFullscreen) {
+                    inner.requestFullscreen();
+                } else if (inner.webkitRequestFullscreen) {
+                    inner.webkitRequestFullscreen();
+                } else if (inner.mozRequestFullscreen) {
+                    inner.mozRequestFullscreen();
+                } else {
+                    alert("sorry,无法全屏");
+                }
+            }
+        }
+
+        // 判断是否是全屏
+        function ifFullscreen() {
+            return document.fullscreen || document.webkitIsFullScreen || document.mozFullScreen || false;
+        }
+    </script>
+
+ ```
